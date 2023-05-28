@@ -1,0 +1,13 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    #restart: always // se a máquina desligar, reinicia auto
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./docker-data:/var/lib/rabbitmq/ # lado direito (dentro do container, # lado esquerdo (minha máquina)
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest

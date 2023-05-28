@@ -1,5 +1,6 @@
 package com.rabbitmq.queues.config;
 
+import com.rabbitmq.queues.entities.Product;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -14,11 +15,11 @@ import org.springframework.stereotype.Component;
 public class RabbitMQConfiguration {
 
     public static final String FIRST_QUEUE_NAME = "rabbit-queue1";
-    public static final String SECOND_QUEUE_NAME = "rabbit-queue2";
+    public static final String SECOND_QUEUE_NAME = "product-queue";
     public static final String FIRST_EXCHANGE_NAME = "rabbit-exchange-1";
-    public static final String SECOND_EXCHANGE_NAME = "rabbit-exchange-2";
+    public static final String SECOND_EXCHANGE_NAME = "product-exchange";
     public static final String FIRST_ROUTING_KEY = "rabbit-routing-key-1";
-    public static final String SECOND_ROUTING_KEY = "rabbit-routing-key-2";
+    public static final String SECOND_ROUTING_KEY = "product-routing-key";
 
     @Bean
     public Queue createQueue() {
@@ -72,8 +73,8 @@ public class RabbitMQConfiguration {
             System.out.println("Mensagem recebida para o RabbitMQ" + message);
         }
         @RabbitListener(queues = RabbitMQConfiguration.SECOND_QUEUE_NAME)
-        public void receiveMessageQueue2(final String message) {
-            System.out.println("Mensagem recebida para o RabbitMQ" + message);
+        public void receiveMessageQueue2(final String product) { // Defino como string pois no Controller é convertido para String
+            System.out.println("Mensagem recebida para o RabbitMQ" + product);
         }
     }
 }

@@ -16,6 +16,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-devtools:3.0.0")
     implementation("org.springframework.amqp:spring-rabbit:3.0.0")
     implementation("com.rabbitmq:amqp-client:5.9.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.0")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
